@@ -1,0 +1,6 @@
+vendor/*
+!vendor/others
+
+.DS_Store
+!.gitignore
+/.idea

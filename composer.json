@@ -1,0 +1,20 @@
+{
+	"name": "teddy/map",
+	"description": "Map adds entities & service for Map",
+	"type": "library",
+	"license": ["MIT", "GPL-2.0", "GPL-3.0"],
+	"minimum-stability": "dev",
+	"authors": [
+		{
+			"name": "Tom Bartoň <grez.cz@gmail.com>"
+		}
+	],
+	"require": {
+		"nette/utils": "~2.3.0",
+		"kdyby/doctrine": "~3.0@stable",
+		"martinlindhe/php-noisegenerator": "^1.0"
+	},
+	"autoload": {
+		"classmap": ["src/"]
+	}
+}
