@@ -150,4 +150,38 @@ class MapService extends \Nette\Object
 		return $position;
 	}
 
+
+
+	/**
+	 * Return javascript Graph (astar.js)
+	 *
+	 * @param int $mapId
+	 * @return string
+	 */
+	public function getJsIncidenceMatrix($mapId)
+	{
+		$map = $this->em->find(Map::class, $mapId);
+		if (!$map) {
+			throw new \InvalidArgumentException('Map doesn\'t exist');
+		}
+
+		$js = 'new window.Graph(';
+		$js .= '[' . "\n";
+
+		for ($x = $map->getRadius() * -1 + 1; $x < $map->getRadius() - 1; $x++) {
+			$js .= '[';
+			$weights = [];
+			for ($y = $map->getRadius() * -1 + 1; $y < $map->getRadius() - 1; $y++) {
+				$position = $map->getPosition($x, $y);
+				$weights[] = $position->getWeight() + 1;
+			}
+			$js .= implode(',', $weights);
+			$js .= '],' . "\n";
+		}
+
+		$js .= ']';
+		$js .= ');';
+		return $js;
+	}
+
 }

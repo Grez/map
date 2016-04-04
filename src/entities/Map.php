@@ -23,6 +23,12 @@ class Map
 	protected $positions;
 
 	/**
+	 * @ORM\Column(type="datetime")
+	 * @var \DateTime
+	 */
+	protected $positionsLastModifiedAt;
+
+	/**
 	 * @ORM\Column(type="integer")
 	 * @var int
 	 */
@@ -107,6 +113,7 @@ class Map
 	 */
 	public function increaseMaxDistance()
 	{
+		$this->setPositionsLastModifiedAt(new \DateTime());
 		$this->radius++;
 		return $this;
 	}
@@ -134,29 +141,23 @@ class Map
 
 
 	/**
-	 * Return javascript Graph (astar.js)
-	 *
-	 * @return string
+	 * @return \DateTime
 	 */
-	public function getJsIncidenceMatrix()
+	public function getPositionsLastModifiedAt()
 	{
-		$js = 'new Graph(';
-		$js .= '[' . "\n";
+		return $this->positionsLastModifiedAt;
+	}
 
-		for ($x = $this->radius * -1 + 1; $x < $this->radius - 1; $x++) {
-			$js .= '[';
-			$weights = [];
-			for ($y = $this->radius * -1 + 1; $y < $this->radius - 1; $y++) {
-				$position = $this->getPosition($x, $y);
-				$weights[] = $position->getWeight() + 1;
-			}
-			$js .= implode(',', $weights);
-			$js .= '],' . "\n";
-		}
 
-		$js .= ']';
-		$js .= ');';
-		return $js;
+
+	/**
+	 * @param \DateTime $positionsLastModifiedAt
+	 * @return Map
+	 */
+	public function setPositionsLastModifiedAt(\DateTime $positionsLastModifiedAt)
+	{
+		$this->positionsLastModifiedAt = $positionsLastModifiedAt;
+		return $this;
 	}
 
 }
