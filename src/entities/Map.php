@@ -3,18 +3,15 @@
 namespace Teddy\Map;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Kdyby\Doctrine\Entities\Attributes\Identifier;
 use Doctrine\ORM\Mapping as ORM;
 
 
 
 /**
- * @ORM\Entity()
+ * @ORM\MappedSuperclass()
  */
 class Map
 {
-
-	use Identifier;
 
 	/**
 	 * @ORM\OneToMany(targetEntity="Position", mappedBy="map", indexBy="id", fetch="LAZY")

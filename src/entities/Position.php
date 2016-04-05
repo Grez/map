@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 
 /**
- * @ORM\Entity(readOnly=TRUE)
+ * @ORM\MappedSuperclass()
  */
 class Position
 {
