@@ -2,8 +2,6 @@
 
 namespace Teddy\Map;
 
-
-
 use Kdyby\Doctrine\EntityManager;
 use NoiseGenerator\PerlinNoise;
 
@@ -36,11 +34,11 @@ class MapService extends \Nette\Object
 
 	/**
 	 * @param int $radius
-	 * @return Map
+	 * @return \Game\Map\Map
 	 */
 	public function createMap($radius)
 	{
-		$map = new Map();
+		$map = new \Game\Map\Map();
 		$this->em->persist($map);
 		$this->em->flush($map);
 		$this->embiggenMapBy($map, $radius);
@@ -53,11 +51,11 @@ class MapService extends \Nette\Object
 	 * Makes map bigger by $embiggenBy
 	 * http://cs.urbandictionary.com/define.php?term=Embiggen
 	 *
-	 * @param Map $map
+	 * @param \Game\Map\Map $map
 	 * @param int $embiggenBy
-	 * @return Map
+	 * @return \Game\Map\Map
 	 */
-	public function embiggenMapBy(Map $map, $embiggenBy)
+	public function embiggenMapBy(\Game\Map\Map $map, $embiggenBy)
 	{
 		for ($i = 0; $i < $embiggenBy; $i++) {
 			$positions = $this->addBorderToMap($map);
@@ -85,10 +83,10 @@ class MapService extends \Nette\Object
 	 * 4==2
 	 * 4333
 	 *
-	 * @param Map $map
-	 * @return Position[]
+	 * @param \Game\Map\Map $map
+	 * @return \Game\Map\Position[]
 	 */
-	protected function addBorderToMap(Map $map)
+	protected function addBorderToMap(\Game\Map\Map $map)
 	{
 		// There is nothing in map
 		if ($map->getRadius() === 0) {
@@ -121,7 +119,7 @@ class MapService extends \Nette\Object
 
 	/**
 	 * @param int
-	 * @return Map
+	 * @return \Game\Map\Map
 	 */
 	public function getMap($id)
 	{
@@ -131,13 +129,13 @@ class MapService extends \Nette\Object
 
 
 	/**
-	 * @param Map $map
+	 * @param \Game\Map\Map $map
 	 * @param int $x
 	 * @param int $y
 	 * @param bool $addToMap - when the position isn't added to map we don't have to fetch already generated positions
-	 * @return Position
+	 * @return \Game\Map\Position
 	 */
-	protected function createPosition(Map $map, $x, $y, $addToMap = FALSE)
+	protected function createPosition(\Game\Map\Map $map, $x, $y, $addToMap = FALSE)
 	{
 		$perlin = new PerlinNoise($map->getSeed());
 		$num = $perlin->noise($x, $y, 0, $map->getOctaves());
