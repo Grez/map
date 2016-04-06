@@ -30,7 +30,7 @@ $(function() {
 			this.erasePath();
 			cell.addClass('target');
 
-			var worker = new Worker('/mapWorker.js');
+			var worker = new Worker('/main/map-js-worker');
 			worker.onmessage = function (e) {
 				var result = e.data;
 
