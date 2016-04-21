@@ -118,17 +118,6 @@ class MapService extends \Nette\Object
 
 
 	/**
-	 * @param int
-	 * @return \Game\Map\Map
-	 */
-	public function getMap($id)
-	{
-		return $this->em->find(Map::class, $id);
-	}
-
-
-
-	/**
 	 * @param \Game\Map\Map $map
 	 * @param int $x
 	 * @param int $y
@@ -158,7 +147,7 @@ class MapService extends \Nette\Object
 	 */
 	public function getJsIncidenceMatrix($mapId)
 	{
-		$map = $this->em->find(Map::class, $mapId);
+		$map = $this->em->find(\Game\Map\Map::class, $mapId);
 		if (!$map) {
 			throw new \InvalidArgumentException('Map doesn\'t exist');
 		}
