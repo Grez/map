@@ -26,8 +26,10 @@ $(function() {
 		},
 
 		setTarget: function (target) {
+			var self = this;
 			var cell = this.getCellFromPosition(target);
 			this.target = target;
+			self.map.addClass('loading');
 
 			this.erasePath();
 			cell.addClass('target');
@@ -43,6 +45,7 @@ $(function() {
 				var y = gridNode.y;
 				$('.cell[data-virtual-x=' + x + '][data-virtual-y=' + y + ']').addClass('path');
 				weight += result[i].weight;
+				self.map.removeClass('loading');
 			}
 		},
 
