@@ -1,3 +1,6 @@
+/**
+ * Use pathfinding.workers.js... it's more current
+ */
 $(function() {
 	window.Pathfinding = $class({
 

@@ -157,4 +157,28 @@ class Map
 		return $this;
 	}
 
+
+
+	/**
+	 * @return string
+	 */
+	public function getJsIncidenceMatrix()
+	{
+		$js = '[' . "\n";
+
+		for ($x = $this->getRadius() * -1 + 1; $x < $this->getRadius() - 1; $x++) {
+			$js .= '[';
+			$weights = [];
+			for ($y = $this->getRadius() * -1 + 1; $y < $this->getRadius() - 1; $y++) {
+				$position = $this->getPosition($x, $y);
+				$weights[] = $position->getWeight() + 1;
+			}
+			$js .= implode(',', $weights);
+			$js .= '],' . "\n";
+		}
+
+		$js .= ']';
+		return $js;
+	}
+
 }

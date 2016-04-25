@@ -35,6 +35,7 @@ $(function() {
 
 			var worker = new Worker('/main/map-js-worker');
 			worker.onmessage = function (e) {
+				console.log(e);
 				var result = e.data;
 
 				var weight = 0;
@@ -48,7 +49,7 @@ $(function() {
 
 				self.map.removeClass('loading');
 			};
-			var data = { start: this.start, target: this.target };
+			var data = { map: localStorage.getItem('mapJs'), start: this.start, target: this.target };
 			worker.postMessage(data);
 		},
 
@@ -60,7 +61,7 @@ $(function() {
 		getCellFromPosition: function (position) {
 			var virtualX = position[0];
 			var virtualY = position[1];
-			return this.map.find('.cell[data-virtual-x=' + virtualX + '][data-virtual-y=' + virtualY + ']');
+			return this.map.find(' .cell[data-virtual-x=' + virtualX + '][data-virtual-y=' + virtualY + ']');
 		},
 
 		getPositionFromCell: function (cell) {

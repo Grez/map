@@ -11,6 +11,7 @@
 	],
 	"require": {
 		"nette/utils": "~2.3.0",
+		"nette/application": "~2.3.0",
 		"kdyby/doctrine": "~3.0@stable",
 		"martinlindhe/php-noisegenerator": "^1.0"
 	},
