@@ -1,16 +1,17 @@
 $(function() {
 	window.Pathfinding = $class({
 
-		map: $('#mainMap'),
+		selector: '#mainMap',
+		map: undefined,
 		start: undefined,
 		target: undefined,
 
 		constructor: function(graph, start) {
 			var self = this;
-
+			this.map = $(this.selector);
 			this.setStart(start);
 
-			this.map.find('.cell').click(function () {
+			$(this.map).on('click', '.cell', function () {
 				var target = self.getPositionFromCell($(this));
 				self.setTarget(target);
 			});
@@ -43,8 +44,9 @@ $(function() {
 					var y = gridNode.y;
 					$('.cell[data-virtual-x=' + x + '][data-virtual-y=' + y + ']').addClass('path');
 					weight += result[i].weight;
-					self.map.removeClass('loading');
 				}
+
+				self.map.removeClass('loading');
 			};
 			var data = { start: this.start, target: this.target };
 			worker.postMessage(data);
