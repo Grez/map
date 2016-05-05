@@ -8,7 +8,7 @@ use NoiseGenerator\PerlinNoise;
 
 
 /**
- * @method void onEmbiggen(MapService $mapService, Map $map)
+ * @method void onEmbiggen(MapService $mapService, \Game\Map\Map $map)
  */
 class MapService extends \Nette\Object
 {
@@ -33,12 +33,22 @@ class MapService extends \Nette\Object
 
 
 	/**
-	 * @param int $radius
+	 * @param $id
+	 * @return null|\Game\Map\Map
+	 */
+	public function getMap($id)
+	{
+		return $this->em->find(\Game\Map\Map::class, $id);
+	}
+
+
+
+	/**
 	 * @return \Game\Map\Map
 	 */
-	public function createMap($radius)
+	public function createMap($radius, $seed = NULL, $octaves = NULL, $elevation = NULL)
 	{
-		$map = new \Game\Map\Map();
+		$map = new \Game\Map\Map($seed, $octaves, $elevation);
 		$this->em->persist($map);
 		$this->em->flush($map);
 		$this->embiggenMapBy($map, $radius);
@@ -65,7 +75,7 @@ class MapService extends \Nette\Object
 
 			// We want to do this in single trasaction
 			$this->em->flush(array_merge([$map], $positions));
-			$this->em->clear(Position::class);
+			$this->em->clear(\Game\Map\Position::class);
 			$this->onEmbiggen($this, $map);
 		}
 
@@ -127,10 +137,10 @@ class MapService extends \Nette\Object
 	protected function createPosition(\Game\Map\Map $map, $x, $y, $addToMap = FALSE)
 	{
 		$perlin = new PerlinNoise($map->getSeed());
-		$num = $perlin->noise($x, $y, 0, $map->getOctaves());
+		$num = $perlin->noise($map->getElevation() * $x, $map->getElevation() * $y, 0, $map->getOctaves());
 		$height = ($num / 2) + 0.5;
 
-		$position = new Position($map, $x, $y, $height);
+		$position = new \Game\Map\Position($map, $x, $y, $height);
 		if ($addToMap) {
 			$map->addPosition($position);
 		}

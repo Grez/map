@@ -47,14 +47,24 @@ class Map
 	 */
 	protected $octaves;
 
+	/**
+	 * Used for Perlin noise
+	 *
+	 * @ORM\Column(type="float")
+	 * @var float
+	 */
+	protected $elevation;
 
 
-	public function __construct($seed = NULL, $octaves = NULL)
+
+	public function __construct($seed = NULL, $octaves = NULL, $elevation = NULL)
 	{
 		$this->positions = new ArrayCollection();
 		$this->radius = 0;
-		$this->seed = $seed ?: mt_rand(1, 2e9);
+		$this->seed = $seed ?: mt_rand(1, 2e8);
 		$this->octaves = $octaves ?: [64, 32, 16, 4];
+		$this->elevation = $elevation ?: 4.2;
+		$this->positionsLastModifiedAt = new \DateTime();
 	}
 
 
@@ -179,6 +189,52 @@ class Map
 
 		$js .= ']';
 		return $js;
+	}
+
+
+
+	/**
+	 * @return float
+	 */
+	public function getElevation()
+	{
+		return $this->elevation;
+	}
+
+
+
+	/**
+	 * @param float $elevation
+	 * @return Map
+	 */
+	public function setElevation($elevation)
+	{
+		$this->elevation = $elevation;
+		return $this;
+	}
+
+
+
+	/**
+	 * @param int[] $octaves
+	 * @return Map
+	 */
+	public function setOctaves($octaves)
+	{
+		$this->octaves = $octaves;
+		return $this;
+	}
+
+
+
+	/**
+	 * @param int $seed
+	 * @return Map
+	 */
+	public function setSeed($seed)
+	{
+		$this->seed = $seed;
+		return $this;
 	}
 
 }
