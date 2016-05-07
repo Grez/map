@@ -47,6 +47,17 @@ class MapControl extends Control
 
 
 
+	/**
+	 * Forces map rendering
+	 */
+	public function handleRenderMap()
+	{
+		$this->renderMap = TRUE;
+		$this->redrawControl();
+	}
+
+
+
 	public function render()
 	{
 		$template = parent::createTemplate();

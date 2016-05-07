@@ -1,32 +1,39 @@
-<div n:snippet="map">
+<div n:snippet="map" class="ajax-overlay">
 	<div id="teddy-map"></div>
 	<script type='text/javascript'>
 		$(function() {
 			{if $renderMap}
-				{var $size = ($map->getRadius() - 1) * 20}
-				var map = '<div class="map" id="mainMap">';
-					map += '<div style="width: {$size}px">';
-						{for $x = $map->getRadius() * -1 + 1; $x < $map->getRadius() - 1; $x++}
-							map += '<div class="rw">';
-								{for $y = $map->getRadius() * -1 + 1; $y < $map->getRadius() - 1; $y++}
-									{var $position = $map->getPosition($x, $y)}
-									{var $class = "type" . $position->getHeight()}
-									{var $cell = '<div data-virtual-x="' . $position->getVirtualX() . '" data-virtual-y="' . $position->getVirtualY() . '" class="cell ' . $class . '" title="' . $position->getId() . '"></div>'}
-									map += {$cell}
-								{/for}
-							map += '</div>';
-						{/for}
+			{var $size = ($map->getRadius() - 1) * 20}
+			var map = '<div class="map" id="mainMap">';
+			map += '<div style="width: {$size}px">';
+			{for $x = $map->getRadius() * -1 + 1; $x < $map->getRadius() - 1; $x++}
+			map += '<div class="rw">';
+			{for $y = $map->getRadius() * -1 + 1; $y < $map->getRadius() - 1; $y++}
+			{var $position = $map->getPosition($x, $y)}
+			{var $class = "type" . $position->getHeight()}
+			{var $cell = '<div data-virtual-x="' . $position->getVirtualX() . '" data-virtual-y="' . $position->getVirtualY() . '" class="cell ' . $class . '" title="' . $position->getId() . '"></div>'}
+			map += {$cell}
+			{/for}
 					map += '</div>';
-					map += '<div class="map-overlay" style="width: {$size}px; height: {$size}px"></div>';
-				map += '</div>';
+			{/for}
+			map += '</div>';
+			map += '<div class="map-overlay" style="width: {$size}px; height: {$size}px"></div>';
+			map += '</div>';
 
-				localStorage.setItem('map', map);
-				localStorage.setItem('mapJs', JSON.stringify({$map->getJsIncidenceMatrix()|noescape}));
+			localStorage.setItem('mapTime', {$map->getPositionsLastModifiedAt()|date:'U'});
+			localStorage.setItem('map', map);
+			localStorage.setItem('mapJs', JSON.stringify({$map->getJsIncidenceMatrix()|noescape}));
 			{/if}
 
-			document.getElementById("teddy-map").innerHTML = localStorage.getItem('map');
-			window.startPosition = [{$startPosition->getVirtualX()}, {$startPosition->getVirtualY()}];
-			window.pathfinding = new Pathfinding(window.graph, window.startPosition);
+			if (localStorage.getItem('mapTime') !== {$map->getPositionsLastModifiedAt()|date:'U'}) {
+				$('#renderMap').click();
+
+			} else {
+				document.getElementById("teddy-map").innerHTML = localStorage.getItem('map');
+				window.startPosition = [{$startPosition->getVirtualX()}, {$startPosition->getVirtualY()}];
+				window.pathfinding = new Pathfinding(window.graph, window.startPosition);
+			}
 		});
 	</script>
+	<a n:href="renderMap!" class="ajax" id="renderMap" style="display: none;">Refresh map</a>
 </div>
