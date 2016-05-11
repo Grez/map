@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "2f1d46ccb183a7035becbcd5b9c413dc",
-    "content-hash": "1a1c28e96f1ecde324adbeb5102156ba",
+    "hash": "0b316fea2e5b4d6ebfb790569472aabb",
+    "content-hash": "bb3c347ec40c3521d4e50aadf0fd11aa",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -150,12 +150,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/collections.git",
-                "reference": "9f89fd349fd2b537be8a0a0c41f87f2f640dfc8a"
+                "reference": "4a9f909f73a2f70be8cd8cdd5b72ce376f21db26"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/collections/zipball/9f89fd349fd2b537be8a0a0c41f87f2f640dfc8a",
-                "reference": "9f89fd349fd2b537be8a0a0c41f87f2f640dfc8a",
+                "url": "https://api.github.com/repos/doctrine/collections/zipball/4a9f909f73a2f70be8cd8cdd5b72ce376f21db26",
+                "reference": "4a9f909f73a2f70be8cd8cdd5b72ce376f21db26",
                 "shasum": ""
             },
             "require": {
@@ -208,7 +208,7 @@
                 "collections",
                 "iterator"
             ],
-            "time": "2016-03-31 10:10:15"
+            "time": "2016-04-28 05:33:48"
         },
         {
             "name": "doctrine/common",
@@ -289,12 +289,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "3df22ccdf20a68fafe34cb1ae452aee7cde7d442"
+                "reference": "1c6f63dff60f1f8c073087833edae2da96d37287"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/3df22ccdf20a68fafe34cb1ae452aee7cde7d442",
-                "reference": "3df22ccdf20a68fafe34cb1ae452aee7cde7d442",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/1c6f63dff60f1f8c073087833edae2da96d37287",
+                "reference": "1c6f63dff60f1f8c073087833edae2da96d37287",
                 "shasum": ""
             },
             "require": {
@@ -352,7 +352,7 @@
                 "persistence",
                 "queryobject"
             ],
-            "time": "2016-04-03 03:13:05"
+            "time": "2016-05-09 19:16:16"
         },
         {
             "name": "doctrine/inflector",
@@ -695,23 +695,103 @@
             "time": "2016-04-21 21:35:56"
         },
         {
+            "name": "kdyby/clock",
+            "version": "v0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Kdyby/Clock.git",
+                "reference": "3304c12939c550d5691de93bd5c9501b225ae639"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Kdyby/Clock/zipball/3304c12939c550d5691de93bd5c9501b225ae639",
+                "reference": "3304c12939c550d5691de93bd5c9501b225ae639",
+                "shasum": ""
+            },
+            "require": {
+                "nette/utils": "~2.2@dev"
+            },
+            "require-dev": {
+                "latte/latte": "~2.3@dev",
+                "nette/application": "~2.3@dev",
+                "nette/bootstrap": "~2.3@dev",
+                "nette/caching": "~2.3@dev",
+                "nette/component-model": "~2.2@dev",
+                "nette/database": "~2.3@dev",
+                "nette/deprecated": "~2.2@dev",
+                "nette/di": "~2.3@dev",
+                "nette/finder": "~2.3@dev",
+                "nette/forms": "~2.3@dev",
+                "nette/http": "~2.3@dev",
+                "nette/mail": "~2.3@dev",
+                "nette/neon": "~2.3@dev",
+                "nette/php-generator": "~2.3@dev",
+                "nette/reflection": "~2.3@dev",
+                "nette/robot-loader": "~2.3@dev",
+                "nette/safe-stream": "~2.3@dev",
+                "nette/security": "~2.3@dev",
+                "nette/tester": "~1.3@rc",
+                "nette/tokenizer": "~2.2@dev",
+                "nette/utils": "~2.3@dev",
+                "tracy/tracy": "~2.3@dev"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Kdyby\\Clock\\": "src/"
+                },
+                "classmap": [
+                    "src/Kdyby/Clock/exceptions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause",
+                "GPL-2.0",
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Moravec"
+                },
+                {
+                    "name": "Filip Procházka",
+                    "homepage": "http://filip-prochazka.com"
+                }
+            ],
+            "description": "Time provider, providing consistent current date, time, datetime and timezone across the request.",
+            "homepage": "http://kdyby.org",
+            "keywords": [
+                "date",
+                "kdyby",
+                "nette",
+                "time"
+            ],
+            "time": "2016-01-09 18:10:46"
+        },
+        {
             "name": "kdyby/console",
             "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Kdyby/Console.git",
-                "reference": "e39565bae96e78b9e000677417c90ac2d7ccba47"
+                "reference": "5fddef95acac0aaab992d56b0cf63c9b97dbd28e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Kdyby/Console/zipball/e39565bae96e78b9e000677417c90ac2d7ccba47",
-                "reference": "e39565bae96e78b9e000677417c90ac2d7ccba47",
+                "url": "https://api.github.com/repos/Kdyby/Console/zipball/5fddef95acac0aaab992d56b0cf63c9b97dbd28e",
+                "reference": "5fddef95acac0aaab992d56b0cf63c9b97dbd28e",
                 "shasum": ""
             },
             "require": {
                 "nette/di": "~2.3@dev",
                 "php": ">=5.4",
-                "symfony/console": "~2.3"
+                "symfony/console": "~2.3|~3.0"
             },
             "require-dev": {
                 "kdyby/events": "~2.4@dev|~3.0@dev",
@@ -736,7 +816,7 @@
                 "nette/tester": "~1.6@rc",
                 "nette/tokenizer": "~2.2@dev",
                 "nette/utils": "~2.3@dev",
-                "symfony/event-dispatcher": "~2.3",
+                "symfony/event-dispatcher": "~2.3|~3.0",
                 "tracy/tracy": "~2.3@dev"
             },
             "suggest": {
@@ -778,7 +858,7 @@
                 "kdyby",
                 "nette"
             ],
-            "time": "2016-04-21 21:35:56"
+            "time": "2016-05-01 20:25:11"
         },
         {
             "name": "kdyby/doctrine",
@@ -959,12 +1039,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Kdyby/Events.git",
-                "reference": "616b59863e71ca1b8da3bdfdfcb3a336341c35b7"
+                "reference": "7289eff49d006c25bd693fcdc4d5ef4b6b1e0dfb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Kdyby/Events/zipball/616b59863e71ca1b8da3bdfdfcb3a336341c35b7",
-                "reference": "616b59863e71ca1b8da3bdfdfcb3a336341c35b7",
+                "url": "https://api.github.com/repos/Kdyby/Events/zipball/7289eff49d006c25bd693fcdc4d5ef4b6b1e0dfb",
+                "reference": "7289eff49d006c25bd693fcdc4d5ef4b6b1e0dfb",
                 "shasum": ""
             },
             "require": {
@@ -993,7 +1073,7 @@
                 "nette/tester": "~1.4",
                 "nette/tokenizer": "~2.2@dev",
                 "nette/utils": "~2.3@dev",
-                "symfony/event-dispatcher": "~2.3",
+                "symfony/event-dispatcher": "~2.3|~3.0",
                 "tracy/tracy": "~2.3@dev"
             },
             "type": "library",
@@ -1032,7 +1112,7 @@
                 "kdyby",
                 "nette"
             ],
-            "time": "2016-04-19 19:14:04"
+            "time": "2016-05-01 19:47:49"
         },
         {
             "name": "martinlindhe/php-noisegenerator",
@@ -1143,12 +1223,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/caching.git",
-                "reference": "a78f943baf43dec43afe8f9ca5647c5ec7e599e3"
+                "reference": "88b274a7cc21e91713d88cfe223c31519855e8d4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/caching/zipball/a78f943baf43dec43afe8f9ca5647c5ec7e599e3",
-                "reference": "a78f943baf43dec43afe8f9ca5647c5ec7e599e3",
+                "url": "https://api.github.com/repos/nette/caching/zipball/88b274a7cc21e91713d88cfe223c31519855e8d4",
+                "reference": "88b274a7cc21e91713d88cfe223c31519855e8d4",
                 "shasum": ""
             },
             "require": {
@@ -1193,7 +1273,7 @@
             ],
             "description": "Nette Caching Component",
             "homepage": "https://nette.org",
-            "time": "2016-04-01 15:24:58"
+            "time": "2016-04-25 22:07:33"
         },
         {
             "name": "nette/component-model",
@@ -1407,12 +1487,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/neon.git",
-                "reference": "12fd428df496abea432b0295131386a6d37bae0e"
+                "reference": "1183ec7d9072060105b2d87a3e8b300e4b7f3e98"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/neon/zipball/12fd428df496abea432b0295131386a6d37bae0e",
-                "reference": "12fd428df496abea432b0295131386a6d37bae0e",
+                "url": "https://api.github.com/repos/nette/neon/zipball/1183ec7d9072060105b2d87a3e8b300e4b7f3e98",
+                "reference": "1183ec7d9072060105b2d87a3e8b300e4b7f3e98",
                 "shasum": ""
             },
             "require": {
@@ -1452,7 +1532,7 @@
             ],
             "description": "Nette NEON: parser & generator for Nette Object Notation",
             "homepage": "http://ne-on.org",
-            "time": "2016-04-21 13:04:47"
+            "time": "2016-05-03 08:08:23"
         },
         {
             "name": "nette/php-generator",
@@ -1718,26 +1798,26 @@
         },
         {
             "name": "symfony/console",
-            "version": "2.8.x-dev",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "e77b14ee9c42434c00ec2ed47ffeab7465cd4fa4"
+                "reference": "eac900eacbefd68a29fa1f183590568cb5f6ffd5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/e77b14ee9c42434c00ec2ed47ffeab7465cd4fa4",
-                "reference": "e77b14ee9c42434c00ec2ed47ffeab7465cd4fa4",
+                "url": "https://api.github.com/repos/symfony/console/zipball/eac900eacbefd68a29fa1f183590568cb5f6ffd5",
+                "reference": "eac900eacbefd68a29fa1f183590568cb5f6ffd5",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.9",
+                "php": ">=5.5.9",
                 "symfony/polyfill-mbstring": "~1.0"
             },
             "require-dev": {
                 "psr/log": "~1.0",
-                "symfony/event-dispatcher": "~2.1|~3.0.0",
-                "symfony/process": "~2.1|~3.0.0"
+                "symfony/event-dispatcher": "~2.8|~3.0",
+                "symfony/process": "~2.8|~3.0"
             },
             "suggest": {
                 "psr/log": "For using the console logger",
@@ -1747,7 +1827,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.8-dev"
+                    "dev-master": "3.1-dev"
                 }
             },
             "autoload": {
@@ -1774,7 +1854,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2016-04-20 18:52:26"
+            "time": "2016-05-03 18:48:46"
         },
         {
             "name": "symfony/polyfill-mbstring",

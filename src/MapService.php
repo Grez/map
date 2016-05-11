@@ -2,6 +2,7 @@
 
 namespace Teddy\Map;
 
+use Kdyby\Clock\IDateTimeProvider;
 use Kdyby\Doctrine\EntityManager;
 use NoiseGenerator\PerlinNoise;
 
@@ -23,11 +24,17 @@ class MapService extends \Nette\Object
 	 */
 	public $onEmbiggen = [];
 
+	/**
+	 * @var IDateTimeProvider
+	 */
+	private $timeProvider;
 
 
-	public function __construct(EntityManager $em)
+
+	public function __construct(EntityManager $em, IDateTimeProvider $timeProvider)
 	{
 		$this->em = $em;
+		$this->timeProvider = $timeProvider;
 	}
 
 
@@ -74,6 +81,7 @@ class MapService extends \Nette\Object
 			}
 
 			// We want to do this in single trasaction
+			$map->setPositionsLastModifiedAt($this->timeProvider->getDateTime());
 			$this->em->flush(array_merge([$map], $positions));
 			$this->em->clear(\Game\Map\Position::class);
 			$this->onEmbiggen($this, $map);

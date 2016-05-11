@@ -13,6 +13,7 @@
 		"nette/utils": "~2.3.0",
 		"nette/application": "~2.3.0",
 		"kdyby/doctrine": "~3.0@stable",
+		"kdyby/clock": "^0.3.0",
 		"martinlindhe/php-noisegenerator": "^1.0"
 	},
 	"autoload": {
