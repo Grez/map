@@ -15,19 +15,19 @@ class MapService extends \Nette\Object
 {
 
 	/**
-	 * @var EntityManager
-	 */
-	private $em;
-
-	/**
 	 * @var array
 	 */
 	public $onEmbiggen = [];
 
 	/**
+	 * @var EntityManager
+	 */
+	protected $em;
+
+	/**
 	 * @var IDateTimeProvider
 	 */
-	private $timeProvider;
+	protected $timeProvider;
 
 
 
