@@ -181,7 +181,7 @@ class Map
 			$weights = [];
 			for ($y = $this->getRadius() * -1 + 1; $y < $this->getRadius() - 1; $y++) {
 				$position = $this->getPosition($x, $y);
-				$weights[] = $position->getWeight() + 1;
+				$weights[] = $position->getWeight();
 			}
 			$js .= implode(',', $weights);
 			$js .= '],' . "\n";
