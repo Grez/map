@@ -192,10 +192,43 @@ class MapService extends \Nette\Object
 
 
 	/**
-	 * @param Position[] $path
+	 * Can you walk from $currentPosition to the end of $path?
+	 * @fixme: create new Path class?
+	 *
+	 * @param \Game\Map\Position $currentPosition
+	 * @param \Game\Map\Position[] $path
+	 * @return bool
+	 */
+	public function isPathValid(\Game\Map\Position $currentPosition, $path)
+	{
+		foreach ($path as $position) {
+			if (!$position->isNeighbour($currentPosition)) {
+				return FALSE;
+			}
+			$currentPosition = $position;
+		}
+
+		return TRUE;
+	}
+
+
+
+	/**
+	 * @param \Game\Map\Position[] $path
+	 * @return \Game\Map\Position
+	 */
+	public function getPathDestination($path)
+	{
+		return end($path);
+	}
+
+
+
+	/**
+	 * @param \Game\Map\Position[] $path
 	 * @return int
 	 */
-	protected function getPathWeight($path)
+	public function getPathWeight($path)
 	{
 		$weight = 0;
 		foreach ($path as $position) {
