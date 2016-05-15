@@ -189,4 +189,23 @@ class MapService extends \Nette\Object
 		return $js;
 	}
 
+
+
+	/**
+	 * @param Position[] $path
+	 * @return int
+	 */
+	protected function getPathWeight($path)
+	{
+		$weight = 0;
+		foreach ($path as $position) {
+			$weight += $position->getWeight();
+
+			if ($position->getWeight() === 0) {
+				throw new \InvalidArgumentException('Invalid path (There is tile you can\'t cross');
+			}
+		}
+		return ceil($weight);
+	}
+
 }

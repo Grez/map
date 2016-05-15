@@ -150,4 +150,25 @@ class Position
 		return $this->y + $this->map->getRadius() - 1;
 	}
 
+
+
+	/**
+	 * Are positions next to each other?
+	 *
+	 * @param \Game\Map\Position $position
+	 * @return bool
+	 */
+	public function isNeighbour(\Game\Map\Position $position)
+	{
+		if (abs($this->getVirtualX() - $position->getVirtualX()) > 1) {
+			return FALSE;
+		}
+
+		if (abs($this->getVirtualY() - $position->getVirtualY()) > 1) {
+			return FALSE;
+		}
+
+		return TRUE;
+	}
+
 }
