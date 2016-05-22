@@ -22,6 +22,25 @@ $(function() {
 			var cell = this.getCellFromPosition(start);
 
 			cell.addClass('start');
+			var html = '<div class="start-description"><b>Yup! That\'s you!</b><br>';
+			cell.append(html);
+
+			this.centerToStart();
+		},
+
+		centerToStart: function () {
+			var halfHeight = $(this.selector).height() / 2;
+			var halfWidth = $(this.selector).width() / 2;
+
+			var top = $(this.selector + ' .start').position().top;
+			if (top > halfHeight) {
+				this.map.scrollTop(top - halfHeight);
+			}
+
+			var left = $(this.selector + ' .start').position().left;
+			if (left > halfWidth) {
+				this.map.scrollLeft(left - halfWidth);
+			}
 		},
 
 		setTarget: function (target) {
