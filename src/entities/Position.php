@@ -160,11 +160,19 @@ class Position
 	 */
 	public function isNeighbour(\Game\Map\Position $position)
 	{
-		if (abs($this->getVirtualX() - $position->getVirtualX()) > 1) {
+		$xDist = abs($this->getVirtualX() - $position->getVirtualX());
+		$yDist = abs($this->getVirtualY() - $position->getVirtualY());
+
+		if ($xDist > 1) {
 			return FALSE;
 		}
 
-		if (abs($this->getVirtualY() - $position->getVirtualY()) > 1) {
+		if ($yDist > 1) {
+			return FALSE;
+		}
+
+		// Don't allow moving diagonally
+		if ($xDist === 1 && $yDist === 1) {
 			return FALSE;
 		}
 
